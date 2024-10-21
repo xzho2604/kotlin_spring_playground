@@ -11,5 +11,5 @@ class GreetingController {
     @GetMapping("/{name}")
     fun retrieveGreeting(
         @PathVariable("name") name: String,
-    ): String = "Hello $name you are cool!"
+    ): String = "Hello $name you are cool oh yeah bala!"
 }
