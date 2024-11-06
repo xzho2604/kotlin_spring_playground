@@ -1,0 +1,41 @@
+type Query {
+    hello: String
+    greeting(name: String): String
+    user(id: ID!): User
+    allUsers: [User!]!
+}
+
+type Mutation {
+    saveGreeting(message: String!): Boolean
+    createUser(input: UserInput!): User
+    updateUser(id: ID!, input: UserInput!): User
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    profile: Profile
+    posts: [Post!]
+}
+
+type Profile {
+    bio: String
+    avatar: String
+    joinDate: String!
+}
+
+type Post {
+    id: ID!
+    title: String!
+    content: String!
+    author: User!
+    createdAt: String!
+}
+
+input UserInput {
+    name: String!
+    email: String!
+    bio: String
+    avatar: String
+}
