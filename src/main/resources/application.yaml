@@ -1,17 +1,14 @@
 spring:
   application:
     name: kotlin_spring_playground
+  graphql:
+    graphiql:
+      enabled: true
 
 graphql:
-  servlet:
-    mapping: /graphql
-    enabled: true
-    corsEnabled: true
   playground:
-    enabled: false
-  voyager:
     enabled: true
-  graphiql:
+  voyager:
     enabled: true
 
 server:
