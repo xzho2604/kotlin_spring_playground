@@ -38,12 +38,6 @@
             <artifactId>graphql-spring-boot-starter</artifactId>
             <version>15.1.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.graphql-java-kickstart/voyager-spring-boot-starter -->
-        <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
-            <artifactId>voyager-spring-boot-starter</artifactId>
-            <version>11.1.0</version>
-        </dependency>
 
         <!-- Kotlin -->
         <dependency>
