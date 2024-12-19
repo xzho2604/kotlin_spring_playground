@@ -4,6 +4,8 @@ spring:
   graphql:
     graphiql:
       enabled: true
+  main:
+    allow-circular-references: true
 
 graphql:
   playground:

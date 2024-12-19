@@ -31,7 +31,6 @@ class ChainConfigurations() {
     private lateinit var registry: ResponseChainRegistry
 
     @Bean
-
     fun slackChain(): ResponseHandler<ApiResponse<SlackResponse>> {
         return NullCheckHandler<SlackResponse>().apply {
             setNext(SlackSpecificHandler())
