@@ -1,39 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: kotlin_spring_playground
-  graphql:
-    graphiql:
-      enabled: true
-  main:
-    allow-circular-references: true
-
-graphql:
-  playground:
-    enabled: true
-  voyager:
-    enabled: true
-
-server:
-  port: 8000
-
-
-
-api:
-  slack:
-    baseUrl: "https://slack.com/api"
-    chainType: "slack"
-    headers:
-      Authorization: "Bearer ${SLACK_TOKEN:dummy-token}"
-      Content-Type: "application/json"
-
-  github:
-    baseUrl: "https://api.github.com"
-    chainType: "github"
-    headers:
-      Authorization: "Bearer ${GITHUB_TOKEN:dummy-token}"
-      Accept: "application/vnd.github.v3+json"
-
-logging:
-  level:
-    com.example.apiclient: DEBUG
-    org.springframework.web.reactive.function.client.ExchangeFunctions: DEBUG
+    name: demo-application

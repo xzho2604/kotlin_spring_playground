@@ -1,0 +1,12 @@
+
+slack:
+  chainType: "slack"
+  # this would define different type of transformers and order they should have applied
+  chain:
+    input:
+      - "inputTransformer1"
+      - "inputTransformer2"
+    output:
+      - "outputTransformer1"
+      - "outputTransformer2"
+      - "outputTransformer2"
