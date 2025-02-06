@@ -91,7 +91,7 @@ data class SlackMessageDTO(val content: String)
 data class FormattedSlackMessage(val dto: SlackMessageDTO)
 data class ValidatedSlackMessage(val formatted: FormattedSlackMessage)
 
-
+//TODO: later change to use builder pattern
 //// Builder for transformer chains
 //class TransformerChainBuilder<I, O> {
 //    private val transformers = mutableListOf<Transformer<*, *>>()
@@ -129,12 +129,3 @@ data class ValidatedSlackMessage(val formatted: FormattedSlackMessage)
 //}
 
 
-@RestController
-@RequestMapping("/api/messages")
-class MessageController(private val messageService: MessageService) {
-
-    @PostMapping("/slack")
-    fun sendSlackMessage(@RequestBody message: String): ValidatedSlackMessage {
-        return messageService.processSlackMessage(message)
-    }
-}
