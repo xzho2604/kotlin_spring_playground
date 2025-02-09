@@ -1,10 +1,6 @@
-### Create a new user
-POST http://localhost:8080/api/users
-Content-Type: application/json
 
-{
-  "id": 1,
-  "name": "John Doe",
-  "email": "john@example.com"
-}
+### Send Slack message test
+POST http://localhost:8080/api/messages/slack
+Content-Type: text/plain
 
+Hello, this is a test message for Slack!
