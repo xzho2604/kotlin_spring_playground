@@ -1,6 +1,14 @@
 
 ### Send Slack message test
-POST http://localhost:8080/api/messages/slack
+POST http://localhost:8080/api/messages/SLACK_MESSAGE
 Content-Type: text/plain
 
 Hello, this is a test message for Slack!
+
+
+
+### Send Slack message test
+POST http://localhost:8080/api/messages/discord_message
+Content-Type: text/plain
+
+Hello, this is a test message for Discord!

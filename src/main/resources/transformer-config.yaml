@@ -1,0 +1,9 @@
+outputTransformers:
+  SLACK_MESSAGE:
+    - slackMessagePreprocessor
+    - slackMessageFormatter
+    - slackMessageValidator
+  EMAIL_MESSAGE:
+    - emailPreprocessor
+    - emailFormatter
+    - emailValidator
