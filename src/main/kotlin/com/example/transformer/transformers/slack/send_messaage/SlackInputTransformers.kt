@@ -1,35 +1,26 @@
 package com.example.transformer.transformers.slack.send_messaage
 
+import com.example.transformer.transformers.ActionType
 import com.example.transformer.transformers.Transformer
 import com.example.transformer.transformers.TransformerChain
 import org.springframework.context.ApplicationContext
 import org.springframework.core.io.ClassPathResource
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 import org.yaml.snakeyaml.Yaml
 
-class SlackInputTransformers {
 
-}
-
-
-
-// Configuration data classes
-data class TransformerConfig(
-    val outputTransformers: Map<String, List<String>>
-)
 
 // Factory to create transformer chains from configuration
 //TODO fix load the yaml into class using spring qualifier
-@Component
-class TransformerChainFactory(
+@Service
+class Erik(
+    private val transformerConfig: TransformerConfig,
     private val applicationContext: ApplicationContext
 ) {
-    fun <I, O> createChainFromConfig(actionType: String): TransformerChain<I, O> {
-        val config = loadConfig()
-        val transformerNames = config.outputTransformers[actionType]
-            ?: throw IllegalArgumentException("No transformer chain configured for: $actionType")
+    fun <I, O> createChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
+        println(transformerConfig)
 
-        val transformers = transformerNames.map { name ->
+        val transformers = transformerConfig.outputTransformers[actionType.name]?.map { name ->
             applicationContext.getBean(name, Transformer::class.java)
         }
 
