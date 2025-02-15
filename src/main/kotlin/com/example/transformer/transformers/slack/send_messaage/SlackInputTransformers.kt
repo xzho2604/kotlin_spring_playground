@@ -10,10 +10,8 @@ import org.yaml.snakeyaml.Yaml
 
 
 
-// Factory to create transformer chains from configuration
-//TODO fix load the yaml into class using spring qualifier
 @Service
-class Erik(
+class SlackTransformerChainConfig(
     private val transformerConfig: TransformerConfig,
     private val applicationContext: ApplicationContext
 ) {

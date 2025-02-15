@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component
 @Component
 class SlackOutputTransformers(
     private val transformerChainFactory: TransformerChainFactory,
-    private  val erik : Erik
+    private  val slackTransformerChainConfig : SlackTransformerChainConfig
 ) {
     val identifier: ActionType = ActionType.SLACK_MESSAGE
 
     fun <I, O> getChain(type: ActionType): TransformerChain<I, O> {
-        println(erik)
-        return erik.createChainFromConfig(type)
+        println(slackTransformerChainConfig)
+        return slackTransformerChainConfig.createChainFromConfig(type)
     }
 }
 
