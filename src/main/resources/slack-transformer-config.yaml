@@ -9,9 +9,9 @@ outputTransformers:
     - emailValidator
 inputTransformers:
   SLACK_MESSAGE:
-    - SlackInputPreprocessor
-    - SlackInputFormatter
-    - SlackInputValidator
+    - slackInputPreprocessor
+    - slackInputFormatter
+    - slackInputValidator
   EMAIL_MESSAGE:
     - emailPreprocessor
     - emailFormatter

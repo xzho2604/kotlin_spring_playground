@@ -1,10 +1,7 @@
 package com.example.transformer.transformers.slack.send_messaage
 
 
-import com.example.transformer.transformers.ActionType
 import com.example.transformer.transformers.Transformer
-import com.example.transformer.transformers.TransformerChain
-import com.example.transformer.transformers.slack.SlackTransformerChainConfig
 import org.springframework.stereotype.Component
 
 

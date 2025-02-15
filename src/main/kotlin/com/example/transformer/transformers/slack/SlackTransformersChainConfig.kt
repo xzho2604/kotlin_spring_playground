@@ -3,6 +3,7 @@ package com.example.transformer.transformers.slack
 import com.example.transformer.transformers.ActionType
 import com.example.transformer.transformers.Transformer
 import com.example.transformer.transformers.TransformerChain
+import com.example.transformer.transformers.TransformerChainFactory
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.KotlinModule
@@ -39,8 +40,11 @@ class TransformerConfiguration {
 class SlackTransformerChainConfig(
     private val transformerConfig: TransformerConfig,
     private val applicationContext: ApplicationContext,
-) {
-    fun <I, O> createOutputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
+): TransformerChainFactory {
+    override val provider = "slack";
+    override val actionType = ActionType.SLACK_MESSAGE
+
+    override fun <I, O> createOutputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
         val transformers = transformerConfig.outputTransformers[actionType.name]?.map { name ->
             applicationContext.getBean(name, Transformer::class.java)
         }
@@ -48,7 +52,7 @@ class SlackTransformerChainConfig(
         @Suppress("UNCHECKED_CAST")
         return TransformerChain<I, O>(transformers as List<Transformer<Any, Any>>)
     }
-     fun <I, O> createInputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
+     override fun <I, O> createInputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
         val transformers = transformerConfig.inputTransformers[actionType.name]?.map { name ->
             applicationContext.getBean(name, Transformer::class.java)
         }

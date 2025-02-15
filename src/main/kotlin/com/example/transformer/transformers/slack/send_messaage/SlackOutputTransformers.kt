@@ -1,24 +1,8 @@
 package com.example.transformer.transformers.slack.send_messaage
 
 
-import com.example.transformer.transformers.ActionType
 import com.example.transformer.transformers.Transformer
-import com.example.transformer.transformers.TransformerChain
-import com.example.transformer.transformers.slack.SlackTransformerChainConfig
 import org.springframework.stereotype.Component
-
-// Updated SlackOutputTransformers using configuration
-@Component
-class SlackOutputTransformers(
-    private  val slackTransformerChainConfig : SlackTransformerChainConfig
-) {
-    val identifier: ActionType = ActionType.SLACK_MESSAGE
-
-    fun <I, O> getChain(type: ActionType): TransformerChain<I, O> {
-        println(slackTransformerChainConfig)
-        return slackTransformerChainConfig.createOutputTransformerChainFromConfig(type)
-    }
-}
 
 
 @Component("slackMessagePreprocessor")
