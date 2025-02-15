@@ -7,3 +7,12 @@ outputTransformers:
     - emailPreprocessor
     - emailFormatter
     - emailValidator
+inputTransformers:
+  SLACK_MESSAGE:
+    - SlackInputPreprocessor
+    - SlackInputFormatter
+    - SlackInputValidator
+  EMAIL_MESSAGE:
+    - emailPreprocessor
+    - emailFormatter
+    - emailValidator
