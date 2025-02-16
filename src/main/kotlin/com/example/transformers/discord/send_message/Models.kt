@@ -1,4 +1,4 @@
-package com.example.transformer.transformers.discord.send_message
+package com.example.transformers.discord.send_message
 
 
 // Data classes for the transformation steps

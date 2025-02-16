@@ -1,7 +1,7 @@
-package com.example.transformer.transformers.slack.send_messaage
+package com.example.transformers.slack.send_messaage
 
 
-import com.example.transformer.transformers.Transformer
+import com.example.transformers.Transformer
 import org.springframework.stereotype.Component
 
 

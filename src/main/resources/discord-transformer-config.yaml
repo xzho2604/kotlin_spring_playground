@@ -3,3 +3,6 @@ outputTransformers:
     - discordMessagePreprocessor
     - discordMessageFormatter
     - discordMessageValidator
+inputTransformers:
+  send_discord_message:
+    - noOpTransformer

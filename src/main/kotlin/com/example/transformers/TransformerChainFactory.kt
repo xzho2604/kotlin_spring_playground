@@ -1,4 +1,4 @@
-package com.example.transformer.transformers
+package com.example.transformers
 
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Service
@@ -12,6 +12,7 @@ interface Transformer<in I, out O> {
 // Enum to identify different types of responses
 enum class ActionType {
     SLACK_MESSAGE,
+    discord_send_message,
     DISCORD_MESSAGE,
     EMAIL_NOTIFICATION,
     SMS_NOTIFICATION

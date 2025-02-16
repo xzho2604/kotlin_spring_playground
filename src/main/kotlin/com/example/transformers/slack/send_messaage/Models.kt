@@ -1,4 +1,4 @@
-package com.example.transformer.transformers.slack.send_messaage
+package com.example.transformers.slack.send_messaage
 
 
 // Data classes for the transformation steps

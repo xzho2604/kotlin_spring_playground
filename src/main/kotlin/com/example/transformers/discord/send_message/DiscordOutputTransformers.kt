@@ -1,7 +1,7 @@
-package com.example.transformer.transformers.discord.send_message
+package com.example.transformers.discord.send_message
 
 
-import com.example.transformer.transformers.Transformer
+import com.example.transformers.Transformer
 import org.springframework.stereotype.Component
 
 
