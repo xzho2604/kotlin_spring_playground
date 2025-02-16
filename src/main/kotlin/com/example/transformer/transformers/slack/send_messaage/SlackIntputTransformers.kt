@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class SlackInputPreprocessor : Transformer<String, SlackMessageDTO> {
     override fun transform(input: String): SlackMessageDTO {
         // Transform raw input to Slack message DTO
-        return SlackMessageDTO(input)
+        return SlackMessageDTO(input, "slack_general")
     }
 }
 

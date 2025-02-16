@@ -1,0 +1,5 @@
+outputTransformers:
+  send_discord_message:
+    - discordMessagePreprocessor
+    - discordMessageFormatter
+    - discordMessageValidator

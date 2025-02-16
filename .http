@@ -7,8 +7,8 @@ Hello, this is a test message for Slack!
 
 
 
-### Send Slack message test
-POST http://localhost:8080/api/messages/discord_message
-Content-Type: text/plain
+### send discord message test
+POST http://localhost:8080/api/messages/discord_send_message
+content-type: text/plain
 
-Hello, this is a test message for Discord!
+hello, this is a test message for discord!
