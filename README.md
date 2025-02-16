@@ -1,15 +1,10 @@
 
 
-## Graphql
-http://localhost:8000/graphiql?path=/graphql
 
-```graphql
-query {
-  hello
-  greeting(name: "Test")
-}
-```
+### Overview
+
+![chain_of_transformer_image.excalidraw.png](chain_of_transformer_image.excalidraw.png)
 
 
-we only need the `resource/graphql/scheam.graphqls` file to define the schema and the `resource/graphql/resolver.kt` file to define the resolvers.
-and then the voayger and the doc would work as expected.
+### Run the application
+start the spring from `Application.kt` file, and then send actions via the `.http` files
