@@ -1,20 +1,28 @@
 package com.example.controller
 
-import com.example.transformer.transformers.MessageService
-import com.example.transformer.transformers.ValidatedSlackMessage
+import com.example.transformers.ActionType
+import com.example.transformers.TransformerFactoryService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/messages")
 class MessageController(
-    private val messageService: MessageService,
+    private val transformerFactoryService: TransformerFactoryService
 ) {
-    @PostMapping("/{actionType}")
+    @PostMapping("/{actionType}/{provider}")
     fun sendSlackMessage(
-        @PathVariable actionType: String,
+        @PathVariable actionType: ActionType,
+        @PathVariable provider: String,
         @RequestBody message: String
-    ): ValidatedSlackMessage {
-        print(actionType)
-        return messageService.processSlackMessage(message)
+    ): Any {
+
+        // we passed in the identifier to find which transformer chain to use and this could use and action could use the actionId
+        val inputTransformer = transformerFactoryService.getInputTransformerChain<Any, Any>(provider, actionType)
+        val outputTransformer = transformerFactoryService.getOutputTransformerChain<Any, Any>(provider, actionType)
+        println("executing ${actionType} input chain")
+        println(inputTransformer.execute(message))
+        println("executing slack output chain")
+
+        return outputTransformer.execute(message)
     }
 }
