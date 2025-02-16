@@ -44,16 +44,9 @@ abstract class BaseTransformerChainConfig(
     }
 
     override fun <I, O> createInputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
-        val transformers = transformerConfig.inputTransformers[actionType.name.lowercase()]?.map { name ->
-            try {
-                applicationContext.getBean(name, Transformer::class.java)
-            } catch (e: Exception) {
-                throw IllegalStateException(
-                    "Failed to load transformer bean '$name' for action type ${actionType.name}",
-                    e
-                )
-            }
-        } ?: emptyList()
+        val transformers = transformerConfig.inputTransformers[actionType.name]?.map { name ->
+            applicationContext.getBean(name, Transformer::class.java)
+        }
 
         @Suppress("UNCHECKED_CAST")
         return TransformerChain<I, O>(transformers as List<Transformer<Any, Any>>)

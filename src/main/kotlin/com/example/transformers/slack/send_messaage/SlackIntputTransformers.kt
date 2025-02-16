@@ -5,7 +5,7 @@ import com.example.transformers.Transformer
 import org.springframework.stereotype.Component
 
 
-@Component("slackInputPreprocessor")
+@Component("")
 class SlackInputPreprocessor : Transformer<String, SlackMessageDTO> {
     override fun transform(input: String): SlackMessageDTO {
         // Transform raw input to Slack message DTO
