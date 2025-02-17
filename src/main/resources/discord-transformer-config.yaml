@@ -1,8 +1,11 @@
+inputTransformers:
+  discord_send_message:
+    - noOpTransformer
+webRequestTransformers:
+  discord_send_message:
+    - noOpTransformer
 outputTransformers:
   discord_send_message:
     - discordMessagePreprocessor
     - discordMessageFormatter
     - discordMessageValidator
-inputTransformers:
-  discord_send_message:
-    - noOpTransformer

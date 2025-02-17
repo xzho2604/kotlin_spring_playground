@@ -35,6 +35,7 @@ interface TransformerChainFactory {
 
     fun <I, O> createOutputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O>
     fun <I, O> createInputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O>
+    fun <I, O> createWebRequestTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O>
 }
 
 
@@ -61,6 +62,13 @@ class TransformerFactoryService(
         return transformerFactories
             .find { it.provider == provider && it.actionType == actionType }
             ?.createOutputTransformerChainFromConfig(actionType)
+            ?: throw IllegalArgumentException("No transformer factory found for provider: $provider and action type: $actionType")
+    }
+
+    fun <I, O> getWebRequestTransformerChain(provider: String, actionType: ActionType): TransformerChain<I, O> {
+        return transformerFactories
+            .find { it.provider == provider && it.actionType == actionType }
+            ?.createWebRequestTransformerChainFromConfig(actionType)
             ?: throw IllegalArgumentException("No transformer factory found for provider: $provider and action type: $actionType")
     }
 }

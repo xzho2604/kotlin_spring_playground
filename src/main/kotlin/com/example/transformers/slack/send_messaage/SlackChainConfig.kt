@@ -1,4 +1,4 @@
-package com.example.transformers.slack
+package com.example.transformers.slack.send_messaage
 
 import com.example.transformers.ActionType
 import com.example.transformers.BaseTransformerChainConfig

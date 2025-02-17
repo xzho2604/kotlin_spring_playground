@@ -12,8 +12,9 @@ import org.springframework.core.io.Resource
 
 @ConfigurationProperties
 data class TransformerConfig(
+    val inputTransformers: Map<String, List<String>>,
+    val webRequestTransformers: Map<String, List<String>>,
     val outputTransformers: Map<String, List<String>>,
-    val inputTransformers: Map<String, List<String>>
 )
 
 
@@ -32,6 +33,23 @@ abstract class BaseTransformerChainConfig(
 ) : TransformerChainFactory {
     abstract override val provider: String
     abstract override val actionType: ActionType
+    override fun <I, O> createInputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
+        val transformers = transformerConfig.inputTransformers[actionType.name]?.map { name ->
+            applicationContext.getBean(name, Transformer::class.java)
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        return TransformerChain<I, O>(transformers as List<Transformer<Any, Any>>)
+    }
+
+    override fun <I, O> createWebRequestTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
+        val transformers = transformerConfig.webRequestTransformers[actionType.name]?.map { name ->
+            applicationContext.getBean(name, Transformer::class.java)
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        return TransformerChain<I, O>(transformers as List<Transformer<Any, Any>>)
+    }
 
     override fun <I, O> createOutputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
         // TODO: add try and catch block
@@ -43,14 +61,6 @@ abstract class BaseTransformerChainConfig(
         return TransformerChain<I, O>(transformers as List<Transformer<Any, Any>>)
     }
 
-    override fun <I, O> createInputTransformerChainFromConfig(actionType: ActionType): TransformerChain<I, O> {
-        val transformers = transformerConfig.inputTransformers[actionType.name]?.map { name ->
-            applicationContext.getBean(name, Transformer::class.java)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        return TransformerChain<I, O>(transformers as List<Transformer<Any, Any>>)
-    }
 
 }
 

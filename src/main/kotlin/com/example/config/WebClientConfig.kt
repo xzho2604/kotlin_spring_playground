@@ -10,7 +10,7 @@ class WebClientConfig {
     @Bean
     fun webClient(builder: WebClient.Builder): WebClient {
         return builder
-            .baseUrl("https://api.example.com") // Replace with your API base URL
+            .baseUrl("https://httpbin.org") // Replace with your API base URL
             .build()
     }
 }

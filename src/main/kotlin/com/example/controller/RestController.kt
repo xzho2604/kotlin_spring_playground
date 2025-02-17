@@ -19,6 +19,10 @@ class MessageController(
         // we passed in the identifier to find which transformer chain to use and this could use and action could use the actionId
         val inputTransformer = transformerFactoryService.getInputTransformerChain<Any, Any>(provider, actionType)
         val outputTransformer = transformerFactoryService.getOutputTransformerChain<Any, Any>(provider, actionType)
+        val webRequestPreprocessor =
+            transformerFactoryService.getWebRequestTransformerChain<Any, Any>(provider, actionType)
+        val response  = webRequestPreprocessor.execute(message)
+        println("response from web request preprocessor: $response")
         println("executing ${actionType} input chain")
         println(inputTransformer.execute(message))
         println("executing slack output chain")

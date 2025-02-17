@@ -2,6 +2,7 @@ package com.example.transformers.discord
 
 import com.example.transformers.ActionType
 import com.example.transformers.BaseTransformerChainConfig
+import com.example.transformers.TransformerChain
 import com.example.transformers.transformerConfig
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationContext
@@ -17,4 +18,5 @@ class DiscordTransformersChainConfig(
 ) : BaseTransformerChainConfig(transformerConfig(configResource), applicationContext) {
     override val provider = "discord"
     override val actionType = ActionType.discord_send_message
+
 }
