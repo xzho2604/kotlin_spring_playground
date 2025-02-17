@@ -11,9 +11,9 @@ class SlackWebRequestPreprocessor(
     private val webClient: WebClient
 ) : Transformer<String, String?> {
     override fun transform(input: String): String? {
-        // Transform raw input to Slack message DTO
+//        TODO: could do the transformation of the header and how to send the request here
         println("get input for the web processor input: $input")
-        var response = webClient.get().uri("/get").retrieve().bodyToMono(String::class.java).block()
+        val response = webClient.post().uri("/post").bodyValue(input).retrieve().bodyToMono(String::class.java).block()
         println("response from webclient: $response")
 
         return response
